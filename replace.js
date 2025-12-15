@@ -59,11 +59,11 @@
         try {
             let request = new URL(req instanceof Request ? req.url : req);
  
-            if (request.href.includes("API_AS3_d43c4b859e74432475c1627346078677.swf") || request.href.includes("/flash/API_AS3.swf")) {
+            if (request.href.search(/API_AS3_[a-z0-9]*.swf/) > -1 || request.href.includes("/flash/API_AS3.swf")) {
                 request.href = "https://colin969.github.io/Kongregate-Patched-APIs/API_AS3_MODIFIED.swf";
             }
  
-            if (request.href.includes("API_f99fa1a5a43e48224ae2c0177064456d.swf") || request.href.includes("/flash/API.swf")) {
+            if (request.href.search(/API_[a-z0-9]*.swf/) > -1 || request.href.includes("/flash/API.swf")) {
                 request.href = "https://colin969.github.io/Kongregate-Patched-APIs/API_AS2_MODIFIED.swf";
             }
             return originalFetch(request, options);
